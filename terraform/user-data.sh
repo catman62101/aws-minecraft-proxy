@@ -9,13 +9,13 @@ assert_public_key_found() {
 
 ADMIN_USER=admin
 ADMIN_SSH_PUBLIC_KEY=$(aws ssm get-parameter \
-  --name "/minecraft_server_proxy/admin_public_key" \
+  --name "/mc_server_proxy/admin_public_key" \
   --query "Parameter.Value")
 assert_public_key_found $ADMIN_SSH_PUBLIC_KEY
 
 TUNNEL_USER=tunnel
 TUNNEL_SSH_PUBLIC_KEY=$(aws ssm get-parameter \
-  --name "/minecraft_server_proxy/tunnel_public_key" \
+  --name "/mc_server_proxy/tunnel_public_key" \
   --query "Parameter.Value")
 assert_public_key_found $TUNNEL_SSH_PUBLIC_KEY
 
