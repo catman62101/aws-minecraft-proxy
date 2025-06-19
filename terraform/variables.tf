@@ -11,6 +11,7 @@ variable "admin_public_key" {
 # Use the first subnet defined by default, override to 1 or 2 if the
 # availability zone the first subnet is in fails.
 variable "mc_server_proxy_subnet" {
-  type = number
-  value = 0
+  type    = number
+  default = 0
 }
+

@@ -7,16 +7,20 @@ assert_public_key_found() {
   fi
 }
 
+AWS_REGION=$(curl -s 169.254.169.254/latest/meta-data/placement/region)
+
 ADMIN_USER=admin
 ADMIN_SSH_PUBLIC_KEY=$(aws ssm get-parameter \
   --name "/mc_server_proxy/admin_public_key" \
-  --query "Parameter.Value")
+  --query "Parameter.Value"
+  --region $AWS_REGION)
 assert_public_key_found $ADMIN_SSH_PUBLIC_KEY
 
 TUNNEL_USER=tunnel
 TUNNEL_SSH_PUBLIC_KEY=$(aws ssm get-parameter \
   --name "/mc_server_proxy/tunnel_public_key" \
-  --query "Parameter.Value")
+  --query "Parameter.Value"
+  --region $AWS_REGION)
 assert_public_key_found $TUNNEL_SSH_PUBLIC_KEY
 
 add_user_with_authorized_key() {

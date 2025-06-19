@@ -4,7 +4,7 @@ data "aws_ami" "amazon_linux_2" {
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"] # Matches the standard AL2 HVM AMI names
+    values = ["al2023-ami-2023.*-x86_64"]
   }
 
   filter {
