@@ -3,6 +3,7 @@
 
   tasks:
   - name: Install autossh
+    become: true
     ansible.builtin.apt:
       name: autossh
       state: latest
