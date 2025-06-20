@@ -13,6 +13,7 @@
     copy:
       src: ~/.ssh/admin
       dest: ~/.ssh/admin
+      mode: 0600
 
   - name: Create systemd service file
     become: true
