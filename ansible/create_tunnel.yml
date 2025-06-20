@@ -28,7 +28,7 @@
   - name: Start and enable SSH tunnel service
     become: true
     systemd_service:
-      name: "autossh_tunnel.service@{{ lookup('env', 'MINECRAFT_PROXY_HOST') }}"
+      name: "autossh_tunnel@{{ lookup('env', 'MINECRAFT_PROXY_HOST') }}"
       state: started
       enabled: true
 
