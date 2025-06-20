@@ -12,7 +12,7 @@
   - name: Create systemd service file
     become: true
     copy:
-      dest: /etc/systemd/system/autossh_tunnel.service
+      dest: /etc/systemd/system/autossh_tunnel@.service
       content: |
         [Unit]
         Description=Keeps an SSH tunnel for the Minecraft server open
