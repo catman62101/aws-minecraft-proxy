@@ -1,5 +1,7 @@
 # aws-minecraft-proxy
 
+Work in progress...
+
 ## Step 1 : Create the local Minecraft server
 
 ### Install Ubuntu server
