@@ -1,0 +1,11 @@
+all:
+  hosts:
+    proxy_host:
+      ansible_host: "{{ lookup('env', 'MINECRAFT_PROXY_HOST') }}"
+      ansible_user: admin
+      ansible_ssh_private_key_file: ~/.ssh/admin
+    server_host:
+      ansible_host: "{{ lookup('env', 'MINECRAFT_SERVER_HOST') }}"
+      ansible_user: admin
+      ansible_ssh_private_key_file: ~/.ssh/admin
+
