@@ -1,3 +1,4 @@
+---
 - name: Create and enable SSH tunnel service
   hosts: server_host
 
@@ -26,7 +27,8 @@
 
   - name: Start and enable SSH tunnel service
     become: true
-    name: "autossh_tunnel.service@{{ lookup('env', 'MINECRAFT_PROXY_HOST') }}"
-    state: started
-    enabled: true
+    systemd_service:
+      name: "autossh_tunnel.service@{{ lookup('env', 'MINECRAFT_PROXY_HOST') }}"
+      state: started
+      enabled: true
 
