@@ -9,6 +9,11 @@
       name: autossh
       state: latest
 
+  - name: Copy admin ssh key
+    copy:
+      src: ~/.ssh/admin
+      dest: ~/.ssh/admin
+
   - name: Create systemd service file
     become: true
     copy:
