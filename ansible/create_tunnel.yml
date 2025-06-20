@@ -26,7 +26,7 @@
 
         [Service]
         Environment="AUTOSSH_GATETIME=0"
-        ExecStart=/usr/bin/autossh -N -R 25565:localhost:25565 admin@{{ lookup('env', 'MINECRAFT_PROXY_HOST') }} -i /home/admin/.ssh/admin
+        ExecStart=/usr/bin/autossh -o StrictHostKeyChecking=no -N -R 25565:localhost:25565 admin@{{ lookup('env', 'MINECRAFT_PROXY_HOST') }} -i /home/admin/.ssh/admin
 
         [Install]
         WantedBy=multi-user.target
