@@ -1,0 +1,9 @@
+- name: Create and enable SSH tunnel service
+  hosts: server_host
+
+  tasks:
+  - name: Install autossh
+    ansible.builtin.apt:
+      name: autossh
+      state: latest
+

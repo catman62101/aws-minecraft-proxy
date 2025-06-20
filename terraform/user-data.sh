@@ -48,6 +48,9 @@ assert_public_key_found $TUNNEL_SSH_PUBLIC_KEY
 add_user_with_authorized_key $ADMIN_USER "$ADMIN_SSH_PUBLIC_KEY"
 add_user_with_authorized_key $TUNNEL_USER "$TUNNEL_SSH_PUBLIC_KEY"
 
-# give admin user sudo privileges
+# Give admin user sudo privileges
 echo "$ADMIN_USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/"$ADMIN_USER"
+
+# Allow SSH reverse tunnels to bind to non-loopback addresses
+sed -i -E 's/#(GatewayPorts) no/\1 yes/g' /etc/ssh/sshd_config
 

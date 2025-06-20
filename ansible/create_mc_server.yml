@@ -1,0 +1,7 @@
+---
+- name: Create Minecraft server with Docker
+  hosts: server_host
+  
+  tasks:
+    - name: Install Docker
+      ansible.builtin nah
