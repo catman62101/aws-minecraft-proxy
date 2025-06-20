@@ -8,3 +8,25 @@
       name: autossh
       state: latest
 
+  - name: Create systemd service file
+    become: true
+    copy:
+      dest: /etc/systemd/system/autossh_tunnel.service
+      content: |
+        [Unit]
+        Description=Keeps an SSH tunnel for the Minecraft server open
+        After=network.target
+
+        [Service]
+        Environment="AUTOSSH_GATETIME=0"
+        ExecStart=/usr/bin/autossh -fN -R 25565:localhost:25565 admin@%1 -i /home/admin/.ssh/admin
+
+        [Install]
+        WantedBy=multi-user.target
+
+  - name: Start and enable SSH tunnel service
+    become: true
+    name: "autossh_tunnel.service@{{ lookup('env', 'MINECRAFT_PROXY_HOST') }}"
+    state: started
+    enabled: true
+
