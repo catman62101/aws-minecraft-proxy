@@ -20,7 +20,7 @@
 
         [Service]
         Environment="AUTOSSH_GATETIME=0"
-        ExecStart=/usr/bin/autossh -fN -R 25565:localhost:25565 admin@%1 -i /home/admin/.ssh/admin
+        ExecStart=/usr/bin/autossh -fN -R 25565:localhost:25565 admin@%i -i /home/admin/.ssh/admin
 
         [Install]
         WantedBy=multi-user.target
@@ -28,7 +28,7 @@
   - name: Start and enable SSH tunnel service
     become: true
     systemd_service:
-      name: "autossh_tunnel@{{ lookup('env', 'MINECRAFT_PROXY_HOST') }}"
+      name: autossh_tunnel@"{{ lookup('env', 'MINECRAFT_PROXY_HOST') }}"
       state: started
       enabled: true
 
